@@ -34,8 +34,8 @@ while option!=3:
         [3]-Sair do programa
     
         ''')
-        '''Escolha sua opção ou digite 4 para sair!'''
-        option=int(input("Escolha uma opção ou digite (4)- para sair\n"))
+        '''Escolha sua opção ou digite 3 para sair!'''
+        option=int(input("Escolha uma opção ou digite (3)- para sair\n"))
     if option==3:
         print("Finalizando")
         sleep(2)
@@ -57,8 +57,8 @@ while option!=3:
                 [4]-buscar
                 [5]-Sair do programa fila- voltar ao menu anterior
                     ''')
-                '''Escolha sua opção ou digite 4 Para sair!!'''
-                option=int(input("Escolha uma opção ou digite (4)- para sair\n"))
+                '''Escolha sua opção ou digite 5 Para sair!!'''
+                option=int(input("Escolha uma opção ou digite (5)- para sair\n"))
                 while option>5:
                     '''Erro! Digite de acordo com a númeração!'''
                     print("\nErro! Digite de acordo com a númeração\n")
