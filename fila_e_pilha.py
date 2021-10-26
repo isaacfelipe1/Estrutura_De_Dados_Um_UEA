@@ -1,12 +1,11 @@
 '''Um programa utilizando Fila e Pilha'''
-""" O programa insere, remove, busca elemento  e imprime, de acordo com a Fila e Pilha. Na fila o primeiro que entra é o primeira a sair, na pilha o primeiro a entrar é o último a sair!"""
-#só codar! 
+""" O programa insere, remove, busca elemento  e imprime, de acordo com a Fila e Pilha. 
+Definição:  Na fila o primeiro que entra é o primeiro a sair, na pilha o primeiro a entrar é o último a sair!""" 
 #@autor Isaac Felipe! 
 from time import sleep
 from typing import Deque, Any
 from collections import deque
 from typing import List
-stack:List[str]=[]
 '''Bem vindo ao Programa!'''
 print("\tBem vindo ao programa! :)\n")
 sleep(2)
@@ -21,12 +20,11 @@ while option!=3:
     print('''        [1]-Fila
         [2]-Pilha
         [3]-Sair do programa
-    
     ''')
-    
     '''Escolha sua opção ou digite 3 para sair!'''
     option=int(input("Escolha uma opção ou digite (3) para sair\n"))
-    while option >3:
+    # um condição de erro, se for maior que 3 ou se for igual a 0, irá mostrar essa mensagem personalizada de erro.
+    while option >3 or option==0: 
         '''Errro! Digite de acordo com a númeração!'''
         print("\nErro! Digite de acordo com a númeração\n")
         print('''        [1]-Fila
@@ -44,14 +42,15 @@ while option!=3:
         print('\tBem-vindo ao programa\n ')
         sleep(2)
         option=0
-        queue: Deque[Any]=deque()
+        queue:Deque[Any]=deque()
         inserir=input("\nDigite um número para inserção\n")
         queue.append(inserir)
         lista+=[inserir]
         cont+=1
-        print("Contador : ", cont)
+        print(f'Contador :{cont} Elemento')
+        print()
         while option!=5:
-                print('''                [1]- Inserir 
+                print('''                [1]-Inserir 
                 [2]-Remover
                 [3]-Imprimir todos os elementos
                 [4]-buscar
@@ -71,27 +70,30 @@ while option!=3:
                     '''Escolha sua opção ou digite 4 Para sair!!'''
                     option=int(input("Escolha uma opção ou digite (5)-para sair\n"))
                 if option==1:
-                        queue: Deque[Any]=deque()
+                        queue:Deque[Any]=deque()
                         inserir=input("\nDigite um número para inserção\n")
                         queue.append(inserir)
                         lista+=[inserir]
                         cont+=1
                         print("Contador: ", cont)
+                ''' Na opção (2), o último elemento é removido e retornado, mostrado na tela'''
                 if option==2:
-                        ultimo=queue.popleft()
-                        print(f'O último elemento a ser removido foi o {ultimo}')
+                        ultimo_elemento_a_ser_removido=queue.popleft()
+                        print(f'O último elemento a ser removido foi o {ultimo_elemento_a_ser_removido}')
+                ''' na opção (3), é mostrado todos os dados digitados'''
                 if option==3:
+                    print("\n___ Todos os Dados Digitados____\n")
                     for i in lista:
-                        print(i)
+                        print(f'elemento {i}')
+                print("="*30)
                 if option==4:
                     elemento=input("Busque o Elemento : ")
                     for item in lista:
-                        #elemento = busca(lista, item)
-                        if item==elemento:
+                        elemento = busca(lista, item)
+                        if elemento:
                             print("Elemento {0} informado está presente na lista!".format(item))
                         else:
-                            print("Elemento {0} não foi digitado na busca e por isso não encontrado.".format(item))
-                            
+                            print("Elemento {0} não foi digitado na busca e por isso não encontrado.".format(item))  
                 if option==5:
                     '''Saindo do programa Lista'''
                     print("Saindo do Programa Lista\n")
@@ -145,8 +147,8 @@ while option!=3:
                 print('''                
                 [1]-Remover
                 [2]-Imprimir
-                [3]continuar inserindo(depois de ser inserido o primeiro valor )
-                [4]busca
+                [3]-Continuar inserindo
+                [4]-Buscar Elemento
                 [5]-Sair do programa Pilha- voltar ao menu anterior
                     ''')
                 '''Escolha sua opção ou digite 4 Para sair!!'''
@@ -158,7 +160,7 @@ while option!=3:
                     [1]-Remover
                     [2]-Imprimir
                     [3]-Continuar inserindo
-                    [4]-busca
+                    [4]-Buscar Elemento
                     [5]-Sair do programa Pilha- voltar ao menu anterior
                     ''')
                     '''Escolha sua opção ou digite 5 Para sair!!'''
@@ -182,8 +184,8 @@ while option!=3:
                 if option==4: # opção de busca
                     elemento=input("Busque o Elemento : ")
                     for item in lista2[::-1]:
-                        #elemento = busca(lista, item)
-                        if item==elemento:
+                        elemento = busca(lista, item)
+                        if elemento:
                             print("Elemento {0} informado está presente na lista!".format(item))
                         else:
                             print("Elemento {0} não foi digitado na busca e por isso não encontrado.".format(item))
