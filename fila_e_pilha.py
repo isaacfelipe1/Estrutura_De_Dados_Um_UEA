@@ -183,8 +183,8 @@ while option!=3:
                 if option==4: # opção de busca
                     elemento=input("Busque o Elemento : ")
                     for item in lista2[::-1]:
-                        elemento = busca(lista, item)
-                        if elemento:
+                        #elemento = busca(lista, item)
+                        if elemento==item:
                             print("Elemento {0} informado está presente na lista!".format(item))
                         else:
                             print("Elemento {0} não foi digitado na busca e por isso não encontrado.".format(item))
