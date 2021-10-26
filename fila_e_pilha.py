@@ -12,9 +12,7 @@ sleep(2)
 print("="*35)
 print("\nEscolha uma opção\n")#Escolha uma opção
 option=0
-lista2=[]
 cont=0
-opi=0
 d=None
 while option!=3:
     print('''        [1]-Fila
@@ -45,8 +43,7 @@ while option!=3:
         queue:Deque[Any]=deque()
         inserir=input("\nDigite um número para inserção\n")
         queue.append(inserir)
-        d=deque(inserir) 
-        #lista+=[inserir]
+        d=deque(inserir)
         cont+=1
         print(f'Contador :{cont} Elemento')
         print()
@@ -78,8 +75,10 @@ while option!=3:
                         print("Contador: ", cont)
                 ''' Na opção (2), o último elemento é removido e retornado, mostrado na tela'''
                 if option==2:
-                        ultimo_elemento_a_ser_removido=queue.popleft()
-                        print(f'O último elemento a ser removido foi o {ultimo_elemento_a_ser_removido}')
+                    cont-=1
+                    ultimo_elemento_a_ser_removido=queue.popleft()
+                    print(f'O último elemento a ser removido foi o {ultimo_elemento_a_ser_removido}')
+                    print("Contador ", cont)
                 ''' na opção (3), é mostrado todos os dados digitados'''
                 if option==3:
                     print("\n___ Todos os Dados Digitados____\n")
@@ -101,8 +100,11 @@ while option!=3:
     if option==2:
         print('\tBem-vindo ao programa\n ')
         sleep(2)
+        stack: List[str] = []
         inserir=input("Digite um elemento para inserção\n")
-        lista2+=[inserir]
+        stack.append(inserir)
+        cont+=1
+        print("Contador : ",cont)
         class NodoLista:
             """ Esta classe representa um nodo de uma Lista Encadeada"""
             def __init__(self,dado=0, proximo_nodo=None):
@@ -144,9 +146,9 @@ while option!=3:
         option=0
         while option!=5:
                 print('''                
-                [1]-Remover
-                [2]-Imprimir
-                [3]-Continuar inserindo
+                [1]-Continuar inserido
+                [2]-Remover
+                [3]-Imprimir
                 [4]-Buscar Elemento
                 [5]-Sair do programa Pilha- voltar ao menu anterior
                     ''')
@@ -156,34 +158,37 @@ while option!=3:
                     '''Erro! Digite de acordo com a númeração!'''
                     print("\nErro! Digite de acordo com a númeração\n")
                     print('''                       
-                    [1]-Remover
-                    [2]-Imprimir
-                    [3]-Continuar inserindo
+                    [1]-continuar inserido
+                    [2]-remover
+                    [3]-imprimir
                     [4]-Buscar Elemento
                     [5]-Sair do programa Pilha- voltar ao menu anterior
                     ''')
                     '''Escolha sua opção ou digite 5 Para sair!!'''
-                    option=int(input("Escolha uma opção ou digite 4 para sair\n"))
+                    option=int(input("Escolha uma opção ou digite 5 para sair\n"))
                 if option==1:
-                    from typing import List
-                    stack: List[str] = [inserir]
+                    inserir=input("Digite outro Elemento :")
+                    nodo_anterior=lista.cabeca
+                    insere_depois(lista,nodo_anterior,inserir)
+                    stack.append(inserir)
+                    cont+=1
+                    print("Contador : ", cont)
+                    print("Inserido um novo elemento depois de um outro :",lista)
+
+                if option==2: # opção de retirada de elemento
                     try:
-                        print(f'O último valor a ser Retirado foi : {stack.pop()}')
+                        print(f'O elemento Retirado : {stack.pop()}')
+                        cont-=1
+                        print("Contador : ", cont)
                     except IndexError:
                         print("Sua pilha está vazia")
-                if option==2:
-                    for item in lista2[::-1]:
-                         print(item)
-                if option==3:# opção informar o próximo elemento
-                    depois=input("Digite outro Elemento :")
-                    lista2+=[depois]
-                    nodo_anterior=lista.cabeca
-                    insere_depois(lista,nodo_anterior,depois)
-                    print("Inserido um novo elemento depois de um outro :",lista)
+                    
+                if option==3:
+                    for book in stack[::-1]:
+                                print(book)
                 if option==4: # opção de busca
                     elemento=input("Busque o Elemento : ")
-                    for item in lista2[::-1]:
-                        #elemento = busca(lista, item)
+                    for item in  stack[::-1]:
                         if elemento==item:
                             print("Elemento {0} informado está presente na lista!".format(item))
                         else:
@@ -192,4 +197,4 @@ while option!=3:
                     print("Finalizando")
                     sleep(2)
                     print("Saiu do programa")
-print("=>"*30)
+print("="*30)
