@@ -139,7 +139,6 @@ while option!=3:
                 corrente=corrente.proximo
                 return corrente
         lista=ListaEncadeada()
-        print("Lista Vazia : ", lista)
         insere_no_inicio(lista, inserir)
         print("Lista contém um único ELemento : ", lista)
         print("=>"*30)
