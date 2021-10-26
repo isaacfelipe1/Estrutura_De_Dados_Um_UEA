@@ -12,10 +12,10 @@ sleep(2)
 print("="*35)
 print("\nEscolha uma opção\n")#Escolha uma opção
 option=0
-lista=[]
 lista2=[]
 cont=0
 opi=0
+d=None
 while option!=3:
     print('''        [1]-Fila
         [2]-Pilha
@@ -45,7 +45,8 @@ while option!=3:
         queue:Deque[Any]=deque()
         inserir=input("\nDigite um número para inserção\n")
         queue.append(inserir)
-        lista+=[inserir]
+        d=deque(inserir) 
+        #lista+=[inserir]
         cont+=1
         print(f'Contador :{cont} Elemento')
         print()
@@ -70,10 +71,9 @@ while option!=3:
                     '''Escolha sua opção ou digite 4 Para sair!!'''
                     option=int(input("Escolha uma opção ou digite (5)-para sair\n"))
                 if option==1:
-                        queue:Deque[Any]=deque()
                         inserir=input("\nDigite um número para inserção\n")
                         queue.append(inserir)
-                        lista+=[inserir]
+                        d+=deque(inserir)
                         cont+=1
                         print("Contador: ", cont)
                 ''' Na opção (2), o último elemento é removido e retornado, mostrado na tela'''
@@ -83,15 +83,14 @@ while option!=3:
                 ''' na opção (3), é mostrado todos os dados digitados'''
                 if option==3:
                     print("\n___ Todos os Dados Digitados____\n")
-                    for i in lista:
+                    for i in d:
                         print(f'elemento {i}')
                 print("="*30)
                 if option==4:
                     elemento=input("Busque o Elemento : ")
-                    for item in lista:
-                        elemento = busca(lista, item)
-                        if elemento:
-                            print("Elemento {0} informado está presente na lista!".format(item))
+                    for item in d:
+                        if elemento==item:
+                            print("Elemento {0} está presente na lista!".format(item))
                         else:
                             print("Elemento {0} não foi digitado na busca e por isso não encontrado.".format(item))  
                 if option==5:
